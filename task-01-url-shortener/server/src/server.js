@@ -1,12 +1,18 @@
+import dns from "node:dns";
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
+
+import "dotenv/config";
 import express from "express";
+import { connectDB } from "./config/db.js";
+import urlRoutes from "./routes/urlRoutes.js";
+import { redirectToOriginalUrl } from "./controllers/urlController.js";
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-// Middleware to parse incoming JSON requests
 app.use(express.json());
 
-// Health-check endpoint
+
 app.get("/health", (req, res) => {
   res.status(200).json({
     success: true,
@@ -14,7 +20,15 @@ app.get("/health", (req, res) => {
   });
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+app.get("/:shortCode", redirectToOriginalUrl);
+app.use("/api/urls", urlRoutes);
+
+async function startServer() {
+  await connectDB();
+
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+  });
+}
+
+startServer();
