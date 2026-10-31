@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkSnap - URL Shortener</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+
+        <header class="header">
+            <h1>LinkSnap</h1>
+            <p>Make your long URLs short and shareable.</p>
+        </header>
+
+        <section class="shortener-card">
+
+            <form id="urlForm">
+                <label for="originalUrl">Enter your long URL</label>
+
+                <div class="input-group">
+                    <input
+                        type="url"
+                        id="originalUrl"
+                        placeholder="https://example.com/your-long-url"
+                        required
+                    >
+
+                    <button type="submit" id="shortenBtn">
+                        Shorten URL
+                    </button>
+                </div>
+            </form>
+
+            <p id="message" class="message"></p>
+
+            <div id="resultContainer" class="result-container hidden">
+
+                <h2>Your shortened URL</h2>
+
+                <div class="result-group">
+                    <a id="shortUrl" href="#" target="_blank"></a>
+
+                    <button type="button" id="copyBtn">
+                        Copy
+                    </button>
+                </div>
+
+                <p id="clickCount"></p>
+
+            </div>
+
+        </section>
+
+        <section class="history-card">
+            <div class="history-header">
+                <h2>Recently Shortened URLs</h2>
+                <button type="button" id="refreshBtn">Refresh</button>
+            </div>
+
+            <div id="urlList">
+                <p>Loading URLs...</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Simple, fast and easy URL shortening.</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
