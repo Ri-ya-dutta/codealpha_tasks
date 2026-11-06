@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover events, register online and manage your registrations.">
+    <title>EventHub | Event Registration System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">Event<span>Hub</span></a>
+
+            <nav>
+                <a href="#events">Explore Events</a>
+                <a href="#auth" id="authNavLink">Login / Register</a>
+                <button id="logoutBtn" class="btn btn-outline hidden">
+                    Logout
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <p class="eyebrow">DISCOVER • CONNECT • PARTICIPATE</p>
+                <h1>Find Events That <span>Inspire You.</span></h1>
+                <p>
+                    Explore exciting events, reserve your spot and
+                    manage your registrations in one place.
+                </p>
+                <a href="#events" class="btn btn-primary">
+                    Explore Events
+                </a>
+            </div>
+        </section>
+
+        <!-- Authentication Section -->
+        <section id="auth" class="section">
+            <div class="container auth-container">
+
+                <div class="section-heading">
+                    <p class="eyebrow">YOUR ACCOUNT</p>
+                    <h2>Welcome to EventHub</h2>
+                    <p>Login or create an account to get started.</p>
+                </div>
+
+                <div class="auth-card">
+
+                    <!-- Login Form -->
+                    <form id="loginForm">
+                        <h3>Login</h3>
+
+                        <label for="loginEmail">Email</label>
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                        <label for="loginPassword">Password</label>
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button type="submit" class="btn btn-primary">
+                            Login
+                        </button>
+                    </form>
+
+                    <div class="form-divider"></div>
+
+                    <!-- Registration Form -->
+                    <form id="registerForm">
+                        <h3>Create Account</h3>
+
+                        <label for="registerName">Full Name</label>
+                        <input
+                            type="text"
+                            id="registerName"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                        <label for="registerEmail">Email</label>
+                        <input
+                            type="email"
+                            id="registerEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                        <label for="registerPassword">Password</label>
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Minimum 8 characters"
+                            minlength="8"
+                            required
+                        >
+
+                        <button type="submit" class="btn btn-primary">
+                            Create Account
+                        </button>
+                    </form>
+
+                </div>
+
+                <p id="authMessage" class="message" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- Public Events Section -->
+        <section id="events" class="section events-section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="eyebrow">WHAT'S HAPPENING</p>
+                    <h2>Explore Upcoming Events</h2>
+                    <p>Find an event that matches your interests.</p>
+                </div>
+
+                <div class="event-toolbar">
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search events..."
+                    >
+
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Education">Education</option>
+                        <option value="Business">Business</option>
+                        <option value="Entertainment">Entertainment</option>
+                    </select>
+                </div>
+
+                <div id="eventsContainer" class="events-grid">
+                    <!-- Public event cards generated using JavaScript -->
+                </div>
+
+                <p id="eventsMessage" class="message" aria-live="polite"></p>
+
+            </div>
+        </section>
+
+        <!-- User Dashboard -->
+        <section id="userDashboard" class="section hidden">
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="eyebrow">YOUR ACTIVITY</p>
+                    <h2>My Registrations</h2>
+                    <p>View and manage your event registrations.</p>
+                </div>
+
+                <div id="myRegistrations" class="events-grid">
+                    <!-- User registrations generated using JavaScript -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Organizer Dashboard -->
+        <section id="organizerDashboard" class="section hidden">
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="eyebrow">EVENT MANAGEMENT</p>
+                    <h2>Organizer Dashboard</h2>
+                    <p>Create events and manage your attendees.</p>
+                </div>
+
+                <!-- Create Event -->
+                <div class="dashboard-panel">
+                    <h3>Create New Event</h3>
+
+                    <form id="createEventForm">
+
+                        <label for="eventTitle">Event Title</label>
+                        <input
+                            type="text"
+                            id="eventTitle"
+                            placeholder="Enter event title"
+                            required
+                        >
+
+                        <label for="eventDescription">Description</label>
+                        <textarea
+                            id="eventDescription"
+                            placeholder="Describe your event"
+                            required
+                        ></textarea>
+
+                        <label for="eventCategory">Category</label>
+                        <input
+                            type="text"
+                            id="eventCategory"
+                            placeholder="e.g. Technology"
+                            required
+                        >
+
+                        <label for="eventDate">Date and Time</label>
+                        <input
+                            type="datetime-local"
+                            id="eventDate"
+                            required
+                        >
+
+                        <label for="eventVenue">Venue</label>
+                        <input
+                            type="text"
+                            id="eventVenue"
+                            placeholder="Enter event venue"
+                            required
+                        >
+
+                        <label for="eventCapacity">Capacity</label>
+                        <input
+                            type="number"
+                            id="eventCapacity"
+                            min="1"
+                            placeholder="Maximum attendees"
+                            required
+                        >
+
+                        <button type="submit" class="btn btn-primary">
+                            Create Event
+                        </button>
+
+                    </form>
+
+                    <p
+                        id="organizerMessage"
+                        class="message"
+                        aria-live="polite"
+                    ></p>
+                </div>
+
+                <!-- Organizer's Events -->
+                <div class="dashboard-panel">
+                    <h3>My Events</h3>
+                    <p>View and manage all events created by you.</p>
+
+                    <div id="organizerEvents" class="events-grid">
+                        <!-- Organizer event cards generated using JavaScript -->
+                    </div>
+
+                    <p
+                        id="organizerEventsMessage"
+                        class="message"
+                        aria-live="polite"
+                    ></p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Admin Dashboard -->
+        <section id="adminDashboard" class="section hidden">
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="eyebrow">ADMINISTRATION</p>
+                    <h2>Admin Dashboard</h2>
+                    <p>Manage events and monitor registrations.</p>
+                </div>
+
+                <div id="adminEvents">
+                    <!-- Admin event management generated using JavaScript -->
+                </div>
+
+            </div>
+        </section>
+                <!-- Selected Event Statistics -->
+                <div id="organizerStatisticsSection" class="dashboard-panel hidden">
+                    <h3>Event Statistics</h3>
+                    <p id="statisticsEventTitle"></p>
+
+                    <div id="organizerStatistics">
+                        <!-- Statistics generated using JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Selected Event Attendees -->
+                <div id="organizerAttendeesSection" class="dashboard-panel hidden">
+                    <h3>Event Attendees</h3>
+                    <p id="attendeesEventTitle"></p>
+
+                    <div id="organizerAttendees">
+                        <!-- Attendee list generated using JavaScript -->
+                    </div>
+                </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 EventHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
