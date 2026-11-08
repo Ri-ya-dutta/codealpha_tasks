@@ -194,3 +194,5 @@ MongoDB stores the following collections:
 - Reservations
 - Orders
 - Inventory
+
+Developed as part of the CodeAlpha Backend Development Internship.

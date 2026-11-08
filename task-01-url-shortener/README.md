@@ -321,3 +321,5 @@ Developed as part of a backend development internship task.
 **Project:** URL Shortener
 
 **Repository:** [Backend Tasks](https://github.com/Ri-ya-dutta/backend-tasks)
+
+**Developed as part of the CodeAlpha Backend Development Internship.**

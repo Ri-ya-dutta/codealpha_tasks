@@ -239,4 +239,4 @@ Recommended testing sequence:
 
 ## Author
 
-Developed as part of a Backend Development Internship.
+Developed as part of the CodeAlpha Backend Development Internship.
